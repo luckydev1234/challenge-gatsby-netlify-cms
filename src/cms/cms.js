@@ -17,4 +17,4 @@ CMS.registerPreviewTemplate('about', AboutPagePreview);
 CMS.registerPreviewTemplate('products', ProductPagePreview);
 CMS.registerPreviewTemplate('blog', BlogPostPreview);
 CMS.registerPreviewTemplate('history', HistoryPagePreview);
-CMS.registerWidget('javascriptCustomWidget', JavascriptCustomWidget);
+CMS.registerWidget('javascriptCustomWidget', JavascriptCustomWidget, ({ value }) => value);
