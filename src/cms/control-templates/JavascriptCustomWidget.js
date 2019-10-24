@@ -23,9 +23,14 @@ const style = {
 const JavascriptCustomWidget = ({ value, onChange }) => {
   const handleChange = (e) => {
     const changedValue = e.target.value;
-    if (changedValue.indexOf('</script>') > -1
-      && changedValue.length === changedValue.indexOf('</script>') + 9) {
-      onChange(e.target.value);
+    const startTagNum = changedValue.indexOf('<script>');
+    const endTagNum = changedValue.indexOf('</script>');
+    if (startTagNum > -1 && endTagNum > -1) {
+      if (startTagNum === 0 && changedValue.length === changedValue.indexOf('</script>') + 9) {
+        onChange(changedValue);
+      }
+    } else {
+      onChange(changedValue);
     }
   };
   return (
