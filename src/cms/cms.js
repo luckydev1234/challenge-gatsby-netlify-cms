@@ -1,4 +1,5 @@
-import CMS from 'netlify-cms-app';
+import CMSApp from 'netlify-cms-app';
+import CMS from 'netlify-cms';
 import uploadcare from 'netlify-cms-media-library-uploadcare';
 import cloudinary from 'netlify-cms-media-library-cloudinary';
 
@@ -9,12 +10,12 @@ import IndexPagePreview from './preview-templates/IndexPagePreview';
 import HistoryPagePreview from './preview-templates/HistoryPagePreview';
 import JavascriptCustomWidget from './control-templates/JavascriptCustomWidget';
 
-CMS.registerMediaLibrary(uploadcare);
-CMS.registerMediaLibrary(cloudinary);
+CMSApp.registerMediaLibrary(uploadcare);
+CMSApp.registerMediaLibrary(cloudinary);
 
-CMS.registerPreviewTemplate('index', IndexPagePreview);
-CMS.registerPreviewTemplate('about', AboutPagePreview);
-CMS.registerPreviewTemplate('products', ProductPagePreview);
-CMS.registerPreviewTemplate('blog', BlogPostPreview);
-CMS.registerPreviewTemplate('history', HistoryPagePreview);
+CMSApp.registerPreviewTemplate('index', IndexPagePreview);
+CMSApp.registerPreviewTemplate('about', AboutPagePreview);
+CMSApp.registerPreviewTemplate('products', ProductPagePreview);
+CMSApp.registerPreviewTemplate('blog', BlogPostPreview);
+CMSApp.registerPreviewTemplate('history', HistoryPagePreview);
 CMS.registerWidget('javascriptCustomWidget', JavascriptCustomWidget, ({ value }) => value);

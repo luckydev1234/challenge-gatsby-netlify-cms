@@ -22,7 +22,13 @@ const style = {
 };
 const JavascriptCustomWidget = ({ value, onChange }) => {
   const handleChange = (e) => {
-    onChange(e.target.value);
+    const value = e.target.value;
+    const startTagNum = value.indexOf('<script>');
+    const endTagNum = value.indexOf('</script>');
+    const noTagValue = value.substring(startTagNum + 8, value.length - 9);
+    if (startTagNum === 0 && endTagNum === value.length - 9) {
+      onChange(`<script>${noTagValue}</script>`);
+    }
   };
   return (
     <textarea style={style} onChange={handleChange}>{value}</textarea>
