@@ -5,6 +5,7 @@ import { HistoryPageTemplate } from '../../templates/history-page';
 const HistoryPagePreview = ({ entry, widgetFor }) => (
   <HistoryPageTemplate
     title={entry.getIn(['data', 'title'])}
+    script={widgetFor('script')}
     content={widgetFor('body')}
   />
 )

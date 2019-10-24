@@ -1,3 +1,4 @@
+import React from 'react';
 import CMSApp from 'netlify-cms-app';
 import CMS from 'netlify-cms';
 import uploadcare from 'netlify-cms-media-library-uploadcare';
@@ -18,4 +19,7 @@ CMSApp.registerPreviewTemplate('about', AboutPagePreview);
 CMSApp.registerPreviewTemplate('products', ProductPagePreview);
 CMSApp.registerPreviewTemplate('blog', BlogPostPreview);
 CMSApp.registerPreviewTemplate('history', HistoryPagePreview);
-CMS.registerWidget('javascriptCustomWidget', JavascriptCustomWidget, ({ value }) => value);
+CMS.registerWidget('javascriptCustomWidget', JavascriptCustomWidget, ({ value }) => {
+  const noTagValue = value.substring(value.indexOf('<script>') + 8, value.indexOf('</script>'));
+  return <script>{noTagValue}</script>;
+});

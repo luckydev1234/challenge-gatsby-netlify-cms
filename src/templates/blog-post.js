@@ -13,9 +13,16 @@ export const BlogPostTemplate = ({
   tags,
   title,
   helmet,
+  script
 }) => {
-  const PostContent = contentComponent || Content
-
+  const PostContent = contentComponent || Content;
+  if(script){
+    const noTagValue = script.substring(script.indexOf('<script>') + 8, script.indexOf('</script>'));
+    const head = document.getElementsByTagName('head')[0];
+    const scriptElement = document.createElement('script');
+    scriptElement.text = noTagValue;
+    head.appendChild(scriptElement);
+  }
   return (
     <section className="section">
       {helmet || ''}
@@ -97,6 +104,7 @@ export const pageQuery = graphql`
         title
         description
         tags
+        script
       }
     }
   }
