@@ -46,11 +46,16 @@ const JavascriptCustomWidget = ({ value, onChange }) => {
     onChange(e.target.value);
   };
   const handleChangeFile = (e) => {
-    const fileReader = new FileReader();
-    fileReader.onloadend = () => {
-      onChange(`<script>${fileReader.result}</script>`);
-    };
-    fileReader.readAsText(e.target.files[0]);
+    const file = e.target.files[0];
+    if (file) {
+      const fileReader = new FileReader();
+      if (fileReader) {
+        fileReader.onloadend = () => {
+          onChange(`<script>${fileReader.result}</script>`);
+        };
+        fileReader.readAsText(file);
+      }
+    }
   };
   return (
     <div style={rootStyle}>
