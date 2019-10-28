@@ -17,15 +17,18 @@ export const BlogPostTemplate = (
     script,
   }) => {
   const PostContent = contentComponent || Content;
-  if (script) {
-    const noTagValue = script.substring(script.indexOf('<script>') + 8, script.indexOf('</script>'));
-    if (typeof document !== 'undefined') {
-      const head = document.getElementsByTagName('head')[0];
-      const scriptElement = document.createElement('script');
-      scriptElement.text = noTagValue;
-      head.appendChild(scriptElement);
+  if (typeof document !== 'undefined') {
+    const head = document.getElementsByTagName('head')[0];
+    const scriptElement = document.createElement('script');
+    if (script) {
+      scriptElement.text = script.substring(script.indexOf('<script>') + 8, script.indexOf('</script>'));
+    } else {
+      scriptElement.type = 'text/javascript';
+      scriptElement.src = '';
     }
+    head.appendChild(scriptElement);
   }
+
   return (
     <section className="section">
       {helmet || ''}
