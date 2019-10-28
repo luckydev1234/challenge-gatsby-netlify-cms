@@ -20,6 +20,12 @@ CMSApp.registerPreviewTemplate('products', ProductPagePreview);
 CMSApp.registerPreviewTemplate('blog', BlogPostPreview);
 CMSApp.registerPreviewTemplate('history', HistoryPagePreview);
 CMS.registerWidget('javascriptCustomWidget', JavascriptCustomWidget, ({ value }) => {
-  const noTagValue = value.substring(value.indexOf('<script>') + 8, value.indexOf('</script>'));
-  return <script>{noTagValue}</script>;
+  const startTagNum = value.indexOf('<script>');
+  const endTagNum = value.indexOf('</script>');
+  if (value && startTagNum > -1 && endTagNum > -1) {
+    const noTagValue = value.substring(value.indexOf('<script>') + 8, value.indexOf('</script>'));
+    return <script>{noTagValue}</script>;
+  } else {
+    return '';
+  }
 });
