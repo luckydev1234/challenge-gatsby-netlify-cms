@@ -20,11 +20,13 @@ export const BlogPostTemplate = (
   if (typeof document !== 'undefined') {
     const head = document.getElementsByTagName('head')[0];
     const scriptElement = document.createElement('script');
-    const startTagNum = script.indexOf('<script>');
-    const endTagNum = script.indexOf('</script>');
-    if (script && startTagNum > -1 && endTagNum > -1) {
-      scriptElement.text = script ? script.substring(startTagNum + 8, endTagNum) : '';
-      head.appendChild(scriptElement);
+    if (script) {
+      const startTagNum = script.indexOf('<script>');
+      const endTagNum = script.indexOf('</script>');
+      if (startTagNum > -1 && endTagNum > -1) {
+        scriptElement.text = script ? script.substring(startTagNum + 8, endTagNum) : '';
+        head.appendChild(scriptElement);
+      }
     }
   }
 
