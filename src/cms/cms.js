@@ -1,6 +1,6 @@
 import React from 'react';
 import CMSApp from 'netlify-cms-app';
-import * as CMS from 'netlify-cms';
+import CMS from 'netlify-cms';
 import uploadcare from 'netlify-cms-media-library-uploadcare';
 import cloudinary from 'netlify-cms-media-library-cloudinary';
 
